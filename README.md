@@ -4,7 +4,7 @@ A simple, fast dockerized neovim editor.
 
 ## Configuration
 
-Add the following script to $HOME/.bashrc file.
+Add the following function to $HOME/.bashrc file.
 ```bash
 function ddev {
     local language=$1
@@ -13,20 +13,20 @@ function ddev {
 }
 ```
 
-With this, a new bash function will be available. It allows to start a
-dockerized development environment for the supported languages.
+A new bash function will be available which allows to start a dockerized
+development environment for the supported languages.
 ```bash
 ddev python
 ```
 
-Furthermore, it allows to specify any additional docker command line switches.
+Furthermore, it allows to specify any additional docker command line parameters.
 ```bash
 ddev python -p 8080:8080
 ```
 
 ## Build
 
-Docker images can be built using the following bash script.
+Docker images can be built locally using the following bash script.
 
 ```bash
 ./build.sh all

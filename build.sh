@@ -27,7 +27,7 @@ fi
 case $1 in
     "all")
         build nvim vargab95/nvim
-        for $language in $LANGUAGES
+        for language in "${LANGUAGES[@]}"
         do
             build $language vargab95/nvim-$language
         done

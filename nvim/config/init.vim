@@ -61,6 +61,9 @@ set wildignore+=**/__pycache__/**
 " display all matching files when we tab complete
 set wildmenu
 
+" set shortcut for ale
+nnoremap <C-g> :ALEGoToDefinition<CR>
+
 " set the necessary pathes for vim plugged
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -74,6 +77,16 @@ Plug 'vim-airline/vim-airline-themes'
 
 " to have file analysis and errors
 Plug 'dense-analysis/ale'
+
+" for easy commentary
+Plug 'tpope/vim-commentary'
+
+" add commonly used config
+Plug 'tpope/vim-sensible'
+
+" add FZF for easier navigation
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " end of plugin list
 call plug#end()

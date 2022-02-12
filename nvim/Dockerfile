@@ -1,7 +1,6 @@
-FROM debian:stable
+FROM archlinux
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y neovim curl git
+RUN pacman --noconfirm -Syu neovim curl git ripgrep
 
 RUN useradd -ms /bin/bash developer
 

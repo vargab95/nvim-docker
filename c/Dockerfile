@@ -2,7 +2,7 @@ FROM vargab95/nvim
 
 USER root
 
-RUN apt-get install -y clang-tidy clang-format
+RUN pacman --noconfirm -Syu clang
 
 USER developer
 

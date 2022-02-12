@@ -2,8 +2,8 @@ FROM vargab95/nvim
 
 USER root
 
-RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash - && apt-get install -y nodejs
-RUN npm install -g prettier eslint
+RUN pacman --noconfirm -Syu npm
+RUN npm install -g typescript prettier eslint
 
 USER developer
 

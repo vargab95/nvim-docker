@@ -1,14 +1,14 @@
 #!/bin/bash
 
-LANGUAGES=(`find ./* -maxdepth 0 -type d -not -name nvim -printf "%f\n"`)
+VARIANTS=(`find ./* -maxdepth 0 -type d -printf "%f\n"`)
 
 function print_help {
-    echo "$0 <base|language|all|help> [--push]"
+    echo "$0 <variant|all|help> [--push]"
     echo
-    echo "Supported language are"
-    for language in ${LANGUAGES[@]}
+    echo "Supported variants are"
+    for variant in ${VARIANTS[@]}
     do
-        echo "    - $language"
+        echo "    - $variant"
     done
 }
 
@@ -47,32 +47,28 @@ PUSH=$2
 
 case $1 in
     "all")
-        build nvim vargab95/nvim
-        for language in "${LANGUAGES[@]}"
+        for variant in "${VARIANTS[@]}"
         do
-            build $language vargab95/nvim-$language
+            build $variant vargab95/nvim-$variant
         done
-        ;;
-    "base")
-        build nvim vargab95/nvim
         ;;
     "help")
         print_help
         ;;
     *)
-        language=$1
+        variant=$1
 
-        declare -A language_map_helper
-        for key in "${!LANGUAGES[@]}"
+        declare -A variant_map_helper
+        for key in "${!VARIANTS[@]}"
         do
-            language_map_helper[${LANGUAGES[$key]}]="$key"
+            variant_map_helper[${VARIANTS[$key]}]="$key"
         done
 
-        if [[ -n "${language_map_helper[$language]}" ]]
+        if [[ -n "${variant_map_helper[$variant]}" ]]
         then
-            build $language vargab95/nvim-$language
+            build $variant vargab95/nvim-$variant
         else
-            echo "Not supported language"
+            echo "Not supported variant"
         fi
         ;;
 esac

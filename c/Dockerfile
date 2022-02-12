@@ -1,4 +1,4 @@
-FROM vargab95/nvim
+FROM vargab95/nvim-base
 
 USER root
 

@@ -37,6 +37,9 @@ set encoding=utf-8
 " set relative numbering to help jump
 set relativenumber
 
+" set number as well to have a line number on the current line
+set number
+
 " set a border to usually set 120 line limit
 set colorcolumn=118
 

@@ -1,7 +1,7 @@
 " set up linters and fixers for the languages I use
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
+\   'typescript': ['eslint', 'tsserver'],
 \}
 
 let g:ale_fixers = {
@@ -12,6 +12,3 @@ let g:ale_fixers = {
 \   'scss': ['prettier'],
 \   'html': ['prettier'],
 \}
-
-" enable autoimport
-let g:ale_completion_tsserver_autoimport = 1

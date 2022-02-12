@@ -3,7 +3,7 @@
 LANGUAGES=(`find ./* -maxdepth 0 -type d -not -name nvim -printf "%f\n"`)
 
 function print_help {
-    echo "$0 <base|language|all|help>"
+    echo "$0 <base|language|all|help> [--push]"
     echo
     echo "Supported language are"
     for language in ${LANGUAGES[@]}
@@ -17,12 +17,33 @@ function build {
     IMAGE_NAME=$2
 
     docker image build -t $IMAGE_NAME $DIRECTORY
+
+    if [[ "$PUSH" == "--push" ]]; then
+        push $DIRECTORY $IMAGE_NAME
+    fi
 }
 
-if [ "$#" -ne 1 ]; then
+function push {
+    DIRECTORY=$1
+    IMAGE_NAME=$2
+
+    docker image push $IMAGE_NAME
+}
+
+if [ "$#" -lt 1 ]; then
     print_help
-    exit 0
+    exit 1
+elif [ "$#" -eq 2 ]; then
+    if [[ "$2" != "--push" ]]; then
+        print_help
+        exit 2
+    fi
+elif [ "$#" -gt 2 ]; then
+    print_help
+    exit 3
 fi
+
+PUSH=$2
 
 case $1 in
     "all")

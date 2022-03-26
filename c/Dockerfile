@@ -6,4 +6,6 @@ RUN pacman --noconfirm -Syu clang
 
 USER developer
 
-COPY ./config/language_specific.vim /home/developer/.config/nvim/language_specific.vim
+COPY ./config/language_specific.lua /home/developer/.config/nvim/lua/language_specific.lua
+
+RUN nvim --headless -c "TSInstall c cmake" -c "sleep 10" -c qa

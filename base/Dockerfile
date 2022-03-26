@@ -1,18 +1,20 @@
 FROM archlinux
 
-RUN pacman --noconfirm -Syu neovim curl git ripgrep
+RUN pacman --noconfirm -Syu neovim curl git ripgrep gcc
 
 RUN useradd -ms /bin/bash developer
 
 USER developer
 WORKDIR /home/developer
 
-RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+RUN sh -c 'git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+           ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
 
-COPY ./config/* /home/developer/.config/nvim/
+COPY ./config/dependencies.lua /home/developer/.config/nvim/lua/
 
-RUN nvim --headless +PlugInstall +qall
+RUN nvim --headless -c "luafile /home/developer/.config/nvim/lua/dependencies.lua" -c "PackerInstall" -c "sleep 10" -c "qa"
+
+COPY ./config/init.lua /home/developer/.config/nvim/
 
 WORKDIR /home/developer/workspace
 

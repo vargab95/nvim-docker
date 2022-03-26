@@ -7,4 +7,6 @@ RUN pacman --noconfirm -Syu python3 python-pip && \
 
 USER developer
 
-COPY ./config/language_specific.vim /home/developer/.config/nvim/language_specific.vim
+COPY ./config/language_specific.lua /home/developer/.config/nvim/lua/language_specific.lua
+
+RUN nvim --headless -c "TSInstall python" -c "sleep 10" -c qa

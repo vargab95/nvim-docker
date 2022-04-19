@@ -3,7 +3,7 @@ FROM vargab95/nvim-base
 USER root
 
 RUN pacman --noconfirm -Syu npm
-RUN npm install -g typescript prettier eslint
+RUN npm install -g typescript typescript-language-server neovim prettier eslint
 
 USER developer
 

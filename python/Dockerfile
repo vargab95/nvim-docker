@@ -3,7 +3,7 @@ FROM vargab95/nvim-base
 USER root
 
 RUN pacman --noconfirm -Syu python3 python-pip && \
-    python3 -m pip install pylint flake8 yapf
+    python3 -m pip install pylint flake8 yapf pyright
 
 USER developer
 

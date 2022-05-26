@@ -181,4 +181,5 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-require("language_specific")
+-- require("language_specific")
+pcall(require, "language_specific")

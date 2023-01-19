@@ -1,6 +1,8 @@
 FROM archlinux
 
-RUN pacman --noconfirm -Syu neovim curl git ripgrep gcc
+RUN pacman-key --init && \
+    pacman --noconfirm -Sy archlinux-keyring && \
+    pacman --noconfirm -Syu neovim curl git ripgrep gcc
 
 RUN useradd -ms /bin/bash developer
 

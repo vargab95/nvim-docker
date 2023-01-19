@@ -46,6 +46,9 @@ vim.o.wildignore = vim.o.wildignore .. "**/__pycache__/**"
 -- display all matching files when we tab complete
 vim.o.wildmenu = true
 
+-- disable mouse completely
+vim.opt.mouse = ""
+
 -- make my life harder by disabling arrow keys
 function disable_arrow_keys(mode)
     vim.api.nvim_set_keymap(mode, "<Left>", '<cmd>echo "No left for you!"<CR>', { noremap = true })

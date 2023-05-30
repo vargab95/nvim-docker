@@ -28,6 +28,9 @@ vim.o.hidden = true
 -- set a border to usually set 120 line limit
 vim.o.colorcolumn = "118"
 
+-- disable automatic line wrapping
+vim.o.wrap = false
+
 -- do not generate swap files as locally it causes more
 -- pain than it resolvs
 vim.o.swapfile = false

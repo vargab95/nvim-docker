@@ -205,13 +205,18 @@ vim.keymap.set('n', '<space>fg', telescope_builtin.live_grep, {})
 vim.keymap.set('n', '<space>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<space>fh', telescope_builtin.help_tags, {})
 
-local harpoon_mark = require("harpoon.mark")
-vim.keymap.set('n', '<space>ha', harpoon_mark.add_file, {})
-
-local harpoon_ui = require("harpoon.ui")
-vim.keymap.set('n', '<space>hu', harpoon_ui.toggle_quick_menu, {})
-vim.keymap.set('n', '<space>hn', harpoon_ui.nav_next, {})
-vim.keymap.set('n', '<space>hp', harpoon_ui.nav_prev, {})
+require'treesitter-context'.setup{
+    enable = true,
+    max_lines = 0,
+    min_window_height = 0,
+    line_numbers = true,
+    multiline_threshold = 20,
+    trim_scope = 'outer',
+    mode = 'cursor',
+    separator = nil,
+    zindex = 20,
+    on_attach = nil,
+}
 
 -- require("language_specific")
 pcall(require, "language_specific")

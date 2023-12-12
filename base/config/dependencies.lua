@@ -9,7 +9,17 @@ require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter'
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'nvim-lua/plenary.nvim'
-    use 'ThePrimeagen/harpoon'
+    use 'sidlatau/neotest-dart'
+    use 'nvim-treesitter/nvim-treesitter-context'
+    use {
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim",
+        "mfussenegger/nvim-dap"
+      }
+    }
     use {
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'}, {'BurntSushi/ripgrep'} }
